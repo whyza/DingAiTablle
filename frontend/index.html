@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钉钉AI表格数据源配置</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>钉钉AI表格数据源配置</h1>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="config">数据源配置</button>
+            <button class="tab-btn" data-tab="sheets">表结构</button>
+            <button class="tab-btn" data-tab="records">表记录</button>
+        </nav>
+
+        <main class="content">
+            <div id="config-tab" class="tab-content active">
+                <div class="config-form">
+                    <h2>配置数据源</h2>
+                    <form id="datasourceForm">
+                        <div class="form-group">
+                            <label for="serviceUrl">服务地址</label>
+                            <input type="text" id="serviceUrl" name="serviceUrl" 
+                                   placeholder="http://localhost:8080" 
+                                   value="http://localhost:8080">
+                            <small>公网可访问的服务地址</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dataSourceId">数据源ID</label>
+                            <input type="text" id="dataSourceId" name="dataSourceId" 
+                                   placeholder="请输入数据源ID" 
+                                   value="test_datasource">
+                            <small>唯一标识数据源</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dataSourceName">数据源名称</label>
+                            <input type="text" id="dataSourceName" name="dataSourceName" 
+                                   placeholder="请输入数据源名称" 
+                                   value="测试数据源">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">描述</label>
+                            <textarea id="description" name="description" 
+                                      placeholder="请输入数据源描述"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">保存配置</button>
+                            <button type="button" class="btn btn-secondary" id="testConnection">测试连接</button>
+                        </div>
+                    </form>
+
+                    <div id="configResult" class="result-box"></div>
+                </div>
+            </div>
+
+            <div id="sheets-tab" class="tab-content">
+                <div class="sheets-view">
+                    <h2>表结构</h2>
+                    <div class="toolbar">
+                        <button class="btn btn-primary" id="refreshSheets">刷新表结构</button>
+                    </div>
+                    <div id="sheetsList" class="sheets-list">
+                        <div class="empty-state">
+                            <p>请先配置数据源并点击刷新</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="records-tab" class="tab-content">
+                <div class="records-view">
+                    <h2>表记录</h2>
+                    <div class="toolbar">
+                        <select id="sheetSelector" class="form-control">
+                            <option value="">请选择表</option>
+                        </select>
+                        <button class="btn btn-primary" id="queryRecords">查询记录</button>
+                    </div>
+                    <div class="pagination">
+                        <button class="btn btn-secondary" id="prevPage">上一页</button>
+                        <span id="pageInfo">第 1 页</span>
+                        <button class="btn btn-secondary" id="nextPage">下一页</button>
+                    </div>
+                    <div id="recordsTable" class="records-table">
+                        <div class="empty-state">
+                            <p>请选择表并点击查询</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
